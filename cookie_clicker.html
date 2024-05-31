@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+  	<head>
+  
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='https://fonts.googleapis.com/css?family=Noto Serif JP' rel='stylesheet'>
+		<link rel="stylesheet" href="cookie_clicker.css">
+
+	</head>
+	
+    <body>
+	
+        <div id="cookieClicker" style="display: none;">
+		
+            <h1>Cookie Clicker</h1>
+			
+			<p id="cookiespersecond">You are gaining 0 Cookies per second</p>
+			
+            <div id="clicker">
+			
+                <div id="cookie"> </div>
+				
+            </div>
+			
+            <div>
+			
+                <p>Multiplier: <span id="multiplier">1</span></p>
+				
+            </div>
+			
+            <div id="stats">
+			
+                <p>Cookies: <span id="count">0</span></p>
+				
+            </div>
+			
+            <button id="upgrade">Upgrade (Cost: 10 cookies)</button>
+		
+			<br><br>
+		
+			<div id="AutoUpgrades">
+			
+				<h1> Special Upgrades! </h1>
+				
+				<div id="Upgrades">
+					
+					<div>
+					
+						<button id="upgrade1" onclick="SpecialU(1)">Upgrade (Cost: 50 cookies)</button>
+						<h3 id="C1"> You have: 0 AutoClickers </h3>
+						
+					</div>
+					
+					<div>
+					
+						<div class="Image" id="I1"> </div>
+					
+					</div>
+			
+				</div>
+				
+				<div id="Upgrades">
+			
+					<div>
+					
+						<button id="upgrade2" onclick="SpecialU(2)">Upgrade (Cost: 200 cookies)</button>
+						<h3 id="C2"> You have: 0 Bakers </h3>
+			
+					</div>
+					
+					<div>
+					
+						<div class="Image" id="I2"> </div>
+					
+					</div>
+			
+				</div>
+				
+				<div id="Upgrades">
+					
+					<div>
+					
+						<button id="upgrade3" onclick="SpecialU(3)">Upgrade (Cost: 500 cookies)</button>
+						<h3 id="C3"> You have: 0 Castronocookie </h3>
+			
+					</div>
+					
+					<div>
+					
+						<div class="Image" id="I3"> </div>
+					
+					</div>
+			
+				</div>
+				
+			</div>
+		
+		</div>
+		
+        <script>
+		
+            let count = 0;
+            let cookiesPerClick = 1;
+
+            const cookie = document.getElementById('cookie');
+            const cookieCount = document.getElementById('count');
+            const upgradeCookies = document.getElementById('upgrade');
+            const cookieMultiplier = document.getElementById('multiplier');
+            const game = document.getElementById('cookieClicker');
+
+            const upgradeCost = () => (10 * cookiesPerClick * cookiesPerClick ** (cookiesPerClick));
+
+            const start = () => {
+                const confirmed = confirm("Are you ready to start your Cookie Clicking Adventure?");
+                if(confirmed){
+                    game.style.display = 'block';
+                }
+            };
+
+            window.onload = start;
+
+            cookie.addEventListener('click', () => {
+                count += cookiesPerClick; 
+                cookieCount.textContent = count
+            });
+
+            upgradeCookies.addEventListener('click', () => {
+			
+                const cost = upgradeCost();
+				
+                if (count >= cost) {
+				
+                    count -= cost;
+                    cookiesPerClick++;
+                    cookieCount.textContent = count;
+					upgradeCookies.textContent = "Upgrade (Cost: " + (upgradeCost()) + " cookies)";
+                    cookieMultiplier.textContent = cookiesPerClick;
+					
+                }
+				
+                else if (count < cost){
+                    if (count == (cost) - 1){
+                    alert("You need 1 more cookie!")
+                    }
+                    else if (count <= (cost)){
+                    alert("You need " + ((cost) - count) + " more cookies!");
+                    }
+					
+                }
+            })
+			
+			var CPS = 0;
+			var Costs = [50, 200, 500];
+			var Have = [0, 0, 0];
+			const CPSD = document.getElementById('cookiespersecond');
+			const AutoClicker = document.getElementById('upgrade1');
+			const AutoClickerC = document.getElementById('C1');
+			const Bakers = document.getElementById('upgrade2');
+			const BakersC = document.getElementById('C2');
+			const Castronocookie = document.getElementById('upgrade3');
+			const CastronocookieC = document.getElementById('C3');
+			
+			function SpecialU(x){
+			
+				switch(x){
+				
+					case 1:
+						if (count > Costs[0]){
+							CPS += 1; //The thing that adds to the Cookies per Second 
+							Have[0] += 1 //The adding of number of bakers Purchased
+							count -= Costs[0] //Taking the cookies needed to fulfill the purchase
+							Costs[0] = Math.round(Costs[0] * 1.2) //The Change of price to buy the upgrade again
+							AutoClicker.textContent = "Upgrade (Cost: " + (Costs[0]) + " cookies)"; //The updator for the Cost in the Website
+							AutoClickerC.textContent = "You have: " + Have[0] + " AutoClickers"; //Updating the amount of bakers we have :D
+						}
+						else {
+						alert("You need " + (Costs[0] - count) + " more cookies!");
+						}
+					break;
+					case 2:
+						if (count > Costs[1]){
+							CPS += 5;
+							Have[1] += 1
+							count -= Costs[1]
+							Costs[1] = Math.round(Costs[1] * 1.5)
+							Bakers.textContent = "Upgrade (Cost: " + (Costs[1]) + " cookies)";
+							BakersC.textContent = "You have: " + Have[1] + " Bakers";
+						}
+						else {
+						alert("You need " + (Costs[1] - count) + " more cookies!");
+						}
+					break;
+					case 3:
+						if (count > Costs[2]){
+							CPS += 10;
+							Have[2] += 1
+							count -= Costs[2]
+							Costs[2] = Math.round(Costs[2] * 2)
+							Castronocookie.textContent = "Upgrade (Cost: " + (Costs[2]) + " cookies)";
+							CastronocookieC.textContent = "You have: " + Have[2] + " Castronocookie";
+						}
+						else {
+						alert("You need " + (Costs[2] - count) + " more cookies!");
+						}
+					break;
+					
+				}
+			
+				CPSD.textContent = "You are gaining " + CPS + " Cookies per second";
+				cookieCount.textContent = count;
+			
+			}
+			
+			setInterval(() => {
+			
+				count += CPS;
+				cookieCount.textContent = count;
+			
+			}, 1000)
+			
+        </script>
+		
+    </body>
+	
+</html>

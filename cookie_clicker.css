@@ -1,0 +1,145 @@
+
+            body {
+			
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200vh;
+                margin: 0;
+                font-family: 'Noto Serif JP';
+                background-image: url('courtdraws.gif');
+				background-repeat: no-repeat;
+				background-position: center;
+        		background-size: cover;
+				
+            }
+			
+            #cookieClicker{
+			
+                text-align: center;
+				
+                background-color: rgba(75, 45, 0, 0.3);
+                padding: 20px;
+
+                border: 2px solid rgba(75, 45, 1, 0.5);
+                border-radius: 10px;
+
+				font-family: 'Noto Serif JP';
+				text-align: center;
+				color: white;
+
+            }
+			
+            #clicker {
+			
+                margin: 20px 0;
+				
+            }
+			
+            #cookie {
+			
+                background: url('Cookie.png') no-repeat -85px -84px;
+				width: 155px;
+				height: 147px;
+                cursor: pointer;
+				margin: auto;
+				
+            }
+			
+			#cookie:active {
+			
+				background: url('CookieS.png') no-repeat -78px -77px;
+				width: 155px;
+				height: 147px;
+			
+			}
+			
+            button {
+			
+                padding: 25px 25px;
+                margin-top: 20px;
+                font-size: 16px;
+                cursor: pointer;
+                font-family: 'Noto Serif JP';
+				width: 300px;
+
+                background-image: linear-gradient(to bottom, rgb(150, 75, 0), burlywood);
+                border: 2px solid white;
+                border-radius: 5px; 
+
+              
+                color: white; 
+
+                transition: all 0.2s ease-in-out; 
+				
+            }
+
+            button:hover {
+
+                transform: scale(1.02); 
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+
+          }
+
+          button:active {
+
+                background-color: brown; 
+                transform: scale(0.98); 
+
+          }
+
+          button:disabled {
+
+                background-image: linear-gradient(to bottom, white, white); 
+                cursor: default; 
+
+          }
+
+          button::before {
+
+                content: "";
+                margin-right: 10px; 
+                font-size: 15px; 
+  
+          }
+			
+			#Upgrades {
+			
+				display: flex;
+				margin-bottom: 20px;
+			
+			}
+			
+			.Image {
+			
+				width: 120px;
+				height: 120px;
+				border: 2px solid transparent;
+				margin-left: 20px;
+                border-image: linear-gradient(to right, burlywood, white) 1;
+			
+			}
+			
+			#I1 {
+			
+				background: url('Cursor.png') no-repeat 10px 10px;
+                background-color: white;
+			
+			}
+			
+			#I2 {
+			
+                background: url('WendyBaker.png') no-repeat 5px 5px;
+                background-position: center;
+                background-color: white;
+			
+			}
+			
+			#I3 {
+			
+				background: url('CastronoCookie.png') no-repeat 5px 3px;
+                background-color: white;
+			
+			}
+		
+		
